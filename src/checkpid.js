@@ -1,4 +1,4 @@
-const PIDS = [
+export const PIDS = [
     { "id": "01", "name": "Monitor status since DTCs cleared" },
     { "id": "02", "name": "Freeze DTC" },
     { "id": "03", "name": "Fuel system status" },
@@ -52,7 +52,7 @@ function hexToBinary(hex) {
 }
 
 
-export default function checkForSupported(value){
+export function checkForSupported(value){
     const arr=value.split(' ')
     console.log(arr);
     const binaryValue = hexToBinary(value)
@@ -62,9 +62,7 @@ export default function checkForSupported(value){
             supportedPids.push(PIDS[i])
         }
     }
-    console.log(supportedPids);
     
     return supportedPids
 }
 
-console.log(checkForSupported('12345678'));
