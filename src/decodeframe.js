@@ -32,16 +32,16 @@ export function decodeFrame(data) {
        break;
        // Add other cases for different PIDs if needed
        case '04':
-         decodedata.calcuteEngineLoad(hexdata)
+         return decodedata.calcuteEngineLoad(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '05':
-        decodedata.engineColentTemprature(hexdata)
+        return decodedata.engineColentTemprature(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
        case '06':
-        decodedata.calculate_fuel_Trim(hexdata)
+        return decodedata.calculate_fuel_Trim(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
@@ -57,37 +57,35 @@ export function decodeFrame(data) {
        break;
        // Add other cases for different PIDs if needed
        case '0A':
-        decodedata.calculate_fuel_Pressure(hexdata)
+        return decodedata.calculate_fuel_Pressure(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '0B':
-        decodedata.intake_manifold_absolute_pressure(hexdata)
+        return decodedata.intake_manifold_absolute_pressure(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
        case '0C':
-        decodedata.calculateEngineSpeed(hexdata)
-
-       break;
+        return { id: "0C", name: "Engine speed",value:decodedata.calculateEngineSpeed(hexdata) }
        // Add other cases for different PIDs if needed
        case '0D':
-        decodedata.cal_vechile_Speed(hexdata)
+        return decodedata.cal_vechile_Speed(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '0E':
-        decodedata.cal_timing_Advance(hexdata) 
+        return decodedata.cal_timing_Advance(hexdata) 
        break;
        // Add other cases for different PIDs if needed
        case '0F':
-        decodedata.cal_intake_air_temp(hexdata)  
+        return decodedata.cal_intake_air_temp(hexdata)  
        break;
        // Add other cases for different PIDs if needed
        case '10':
-         decodedata.cal_mass_air_flow(hexdata)
+         return decodedata.cal_mass_air_flow(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '11':
-         decodedata.cal_throttle_position(hexdata)
+         return decodedata.cal_throttle_position(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '12':
@@ -95,48 +93,48 @@ export function decodeFrame(data) {
        break;
        // Add other cases for different PIDs if needed
        case '13':
-        decodedata.cal_oxigen_senV(hexdata)
+        return decodedata.cal_oxigen_senV(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
        case '14':
-        decodedata.cal_oxigen_senV(hexdata)
+        return decodedata.cal_oxigen_senV(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
        case '15':
-        decodedata.cal_oxigen_senV(hexdata)
+        return decodedata.cal_oxigen_senV(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
        case '16':
-        decodedata.cal_oxigen_senV(hexdata)
+        return decodedata.cal_oxigen_senV(hexdata)
 
        break;
 
        // Add other cases for different PIDs if needed
        case '17':
-        decodedata.cal_oxigen_senV(hexdata)
+        return decodedata.cal_oxigen_senV(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
        case '18':
-        decodedata.cal_oxigen_senV(hexdata)
+        return decodedata.cal_oxigen_senV(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
        case '19':
-        decodedata.cal_oxigen_senV(hexdata)
+        return decodedata.cal_oxigen_senV(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
        case '1A':
-        decodedata.cal_oxigen_senV(hexdata)
+        return decodedata.cal_oxigen_senV(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
        case '1B':
-        decodedata.cal_oxigen_senV(hexdata)
+        return decodedata.cal_oxigen_senV(hexdata)
 
        break;
        // Add other cases for different PIDs if needed
@@ -154,7 +152,7 @@ export function decodeFrame(data) {
 
        // Add other cases for different PIDs if needed
        case '1F':
-        decodedata.cal_run_time_engine_start(hexdata)
+        return decodedata.cal_run_time_engine_start(hexdata)
        break;
 
         default:
