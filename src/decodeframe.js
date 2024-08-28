@@ -1,5 +1,6 @@
 import {checkForSupported} from './checkpid'
 import {sendRequestForSupportedPIds} from './sendRequest'
+import {DataHexDecoder} from './calFUnction'
 
 export function decodeFrame(data) {
      let arr=`${data}`.split('  ');
@@ -10,7 +11,7 @@ export function decodeFrame(data) {
      hexdata.splice(0,3)
      hexdata.splice(length,hexdata.length-length)
      hexdata=hexdata.join('').trim()
-
+     const decodedata=new DataHexDecoder();
      switch (pid) {
         case '00':
             const supportedPids = checkForSupported(hexdata);
@@ -20,7 +21,6 @@ export function decodeFrame(data) {
         
         // Add other cases for different PIDs if needed
         case '01':
-            
             break;
        // Add other cases for different PIDs if needed
        case '02':
@@ -32,70 +32,62 @@ export function decodeFrame(data) {
        break;
        // Add other cases for different PIDs if needed
        case '04':
-            
+         decodedata.calcuteEngineLoad(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '05':
-            
+        decodedata.engineColentTemprature(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '06':
-            
+        decodedata.calculate_fuel_Trim(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '07':
-            
        break;
        // Add other cases for different PIDs if needed
        case '08':
-            
+
        break;
        // Add other cases for different PIDs if needed
        case '09':
-            
+
        break;
        // Add other cases for different PIDs if needed
        case '0A':
-            
+        decodedata.calculate_fuel_Pressure(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '0B':
-            
+        decodedata.intake_manifold_absolute_pressure(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '0C':
+        decodedata.calculateEngineSpeed(hexdata)
 
-            let hexA = hexdata.slice(0, 2);
-            let hexB = hexdata.slice(2, 4);
-        
-        
-            let A = parseInt(hexA, 16);
-            let B = parseInt(hexB, 16);
-        
-        
-            let result = (256 * A + B) / 4;
-        
-            console.log("Engine speed in RPM:", result + " rpm");;
        break;
        // Add other cases for different PIDs if needed
        case '0D':
-            
+        decodedata.cal_vechile_Speed(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '0E':
-            
+        decodedata.cal_timing_Advance(hexdata) 
        break;
        // Add other cases for different PIDs if needed
        case '0F':
-            
+        decodedata.cal_intake_air_temp(hexdata)  
        break;
        // Add other cases for different PIDs if needed
        case '10':
-            
+         decodedata.cal_mass_air_flow(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '11':
-            
+         decodedata.cal_throttle_position(hexdata)
        break;
        // Add other cases for different PIDs if needed
        case '12':
@@ -103,40 +95,49 @@ export function decodeFrame(data) {
        break;
        // Add other cases for different PIDs if needed
        case '13':
-            
+        decodedata.cal_oxigen_senV(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '14':
-            
+        decodedata.cal_oxigen_senV(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '15':
-            
+        decodedata.cal_oxigen_senV(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '16':
-            
+        decodedata.cal_oxigen_senV(hexdata)
+
        break;
 
        // Add other cases for different PIDs if needed
        case '17':
-            
+        decodedata.cal_oxigen_senV(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '18':
-            
+        decodedata.cal_oxigen_senV(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '19':
-            
+        decodedata.cal_oxigen_senV(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '1A':
-            
+        decodedata.cal_oxigen_senV(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '1B':
-            
+        decodedata.cal_oxigen_senV(hexdata)
+
        break;
        // Add other cases for different PIDs if needed
        case '1C':
@@ -153,7 +154,7 @@ export function decodeFrame(data) {
 
        // Add other cases for different PIDs if needed
        case '1F':
-            
+        decodedata.cal_run_time_engine_start(hexdata)
        break;
 
         default:

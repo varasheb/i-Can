@@ -1,302 +1,130 @@
-export function calculateEngineSpeed(hexData) {
-
+export class DataHexDecoder {
+  calculateEngineSpeed(hexData) {
     let hexA = hexData.slice(0, 2);
     let hexB = hexData.slice(2, 4);
-
 
     let A = parseInt(hexA, 16);
     let B = parseInt(hexB, 16);
 
-
     let result = (256 * A + B) / 4;
 
-    return result;
-}
+    console.log('Engine speed in RPM:', result + ' rpm');
+  }
 
-
-let hexdata = "12344Z";
-let engineSpeed = calculateEngineSpeed(hexdata);
-
-console.log("Engine speed in RPM:", engineSpeed + " rpm");
-
-
-
-// ==========================================================================================================================================================//
-
-
-
-function calcuteEngineLoad(hexdata) {
-    let hexA = hexdata.slice(0, 2)
+  calcuteEngineLoad(hexdata) {
+    let hexA = hexdata.slice(0, 2);
     let A = parseInt(hexA, 16);
 
+    let result = A / 2.55;
 
-    let result = A / 2.55
-
-    return result;
-}
-
-
-let hexData_calcute_Engine_Load = "1218XA"
-let engineLoad = calcuteEngineLoad(hexData_calcute_Engine_Load)
-console.log("Engine Load in percentage:", engineLoad + " %");
-
-
-// ===========================================================================================================================================================//
-
-function engineColentTemprature(hexData) {
-    let hexA = hexData.slice(0, 2)
-
-
-    let A = parseInt(hexA, 16)
-    let result = A - 40
-
-    return result;
-}
-
-
-let hexData_engine_Colent_Temprature = "1218XA"
-let engine_Colent_Temprature = engineColentTemprature(hexData_engine_Colent_Temprature)
-console.log("Engine coolant temperature: " + engine_Colent_Temprature + "°C");
-
-
-// =========================================================================================================================================================//
-
-
-function calculate_fuel_Trim(hexData) {
-
-    let hexA = hexData.slice(0, 2)
-    let A = parseInt(hexA, 16)
-
-
-    let result = (A / 1.28) - 100;
-
-    return result;
-
-
-}
-
-
-let hexData_fuel_Trim = "12fadf12"
-let fuel_Trim_res = fuel_Trim = calculate_fuel_Trim(hexData_fuel_Trim)
-console.log("fuel_Trim: " + fuel_Trim_res + " %");
-
-
-
-// ============================================================================================================================================================//
-
-
-
-function calculate_fuel_Pressure(hexData){
-
-
-    let hexA = hexData.slice(0, 2)
-    let A = parseInt(hexA, 16)
-
-
-    let result =  3 * A;
-
-    return result;
-
-}
-
-
-let hexData_fuel_Pressure ="12fadf12"
-let fuel_Pressure_res = fuel_Trim = calculate_fuel_Pressure(hexData_fuel_Trim)
-console.log("fuel_Pressure : " + fuel_Pressure_res + " kpa");
-
-
-
-
-// ===========================================================================================================================================================//
-
-
-
-
-
-  function intake_manifold_absolute_pressure(hexData){
-
-
-    let hexA = hexData.slice(0, 2)
-    let A = parseInt(hexA, 16)
-
-
-    let result =  1 * A;
-
-    return result;
-
-
+    console.log('Engine Load in percentage:', result + ' %');
   }
 
+  engineColentTemprature(hexData) {
+    let hexA = hexData.slice(0, 2);
 
-  let hexData_intake_manifold_absolute_pressure= "12fadf12"
-  let intake_manifold_absolute_pressure_res = intake_manifold_absolute_pressure(hexData_intake_manifold_absolute_pressure)
-  console.log("intake_manifold_absolute_pressure : " + intake_manifold_absolute_pressure_res + " kpa");
+    let A = parseInt(hexA, 16);
+    let result = A - 40;
 
-
-
-
-
-  // ==========================================================================================================================///
-
-
-
-
-
-
-  function cal_vechile_Speed(hexData){
-
-    let hexA =hexData.slice(0,2)
-    let A = parseInt(hexA,16)
-    let result = 1 * A
-
-    return result;
-
-
+    console.log('Engine coolant temperature: ' + result + '°C');
   }
 
+  calculate_fuel_Trim(hexData) {
+    let hexA = hexData.slice(0, 2);
+    let A = parseInt(hexA, 16);
 
-let hexData_vechile_Speed="1245AB22"
-let vechile_speed_res = cal_vechile_Speed(hexData_vechile_Speed)
-console.log("Vechile speed in Km/h:", vechile_speed_res  + " Km/h");
+    let result = A / 1.28 - 100;
 
+    console.log('fuel_Trim: ' + result + ' %');
+  }
 
+  calculate_fuel_Pressure(hexData) {
+    let hexA = hexData.slice(0, 2);
+    let A = parseInt(hexA, 16);
 
-//=================================================t============================================================//
+    let result = 3 * A;
 
+    console.log('fuel_Pressure : ' + result + ' kpa');
+  }
 
+  intake_manifold_absolute_pressure(hexData) {
+    let hexA = hexData.slice(0, 2);
+    let A = parseInt(hexA, 16);
 
-function cal_timing_Advance(hexData){
+    let result = 1 * A;
 
-    let hexA =hexData.slice(0,2)
+    console.log('intake_manifold_absolute_pressure : ' + result + ' kpa');
+  }
 
-    let A = parseInt(hexA,16)
+  cal_vechile_Speed(hexData) {
+    let hexA = hexData.slice(0, 2);
+    let A = parseInt(hexA, 16);
+    let result = 1 * A;
 
-    let result = (A / 2) - 64
+    console.log('Vechile speed in Km/h:', result + ' Km/h');
+  }
 
-    return result;
+  cal_timing_Advance(hexData) {
+    let hexA = hexData.slice(0, 2);
 
+    let A = parseInt(hexA, 16);
 
-}
-let hexData_timing_Advance="1245AB22"
-let timing_Advance_res = cal_timing_Advance(hexData_timing_Advance)
-console.log("Timing Advance in deg:", timing_Advance_res  + " deg");
+    let result = A / 2 - 64;
 
+    console.log('Timing Advance in deg:', result + ' deg');
+  }
 
+  cal_intake_air_temp(hexData) {
+    let hexA = hexData.slice(0, 2);
 
+    let A = parseInt(hexA, 16);
 
-//=================================================================================================================//
+    let result = A - 40;
 
+    console.log('Intake AIr Temp in degC:', result + ' degC');
+  }
 
+  cal_mass_air_flow(hexData) {
+    let hexA = hexData.slice(0, 2);
+    let hexB = hexData.slice(2, 4);
 
-function cal_intake_air_temp(hexData){
-
-    let hexA =hexData.slice(0,2)
-
-    let A = parseInt(hexA,16)
-
-    let result = A - 40
-
-    return result;
-
-
-}
-let hexData_intake_air_temp="1245AB22"
-let intake_air_temp_res = cal_intake_air_temp(hexData_intake_air_temp)
-console.log("Intake AIr Temp in degC:", intake_air_temp_res  + " degC");
-
-
-//=============================================================================================================//
-
-
-
-function cal_mass_air_flow(hexData){
-
-    let hexA =hexData.slice(0,2)
-    let hexB = hexData.slice(2,4)
-
-    let A = parseInt(hexA,16)
-    let B = parseInt(hexB,16)
+    let A = parseInt(hexA, 16);
+    let B = parseInt(hexB, 16);
 
     let result = (256 * A + B) / 100;
 
-    return result;
+    console.log('mass air flow in g/s:', result + ' g/s');
+  }
 
+  cal_throttle_position(hexData) {
+    let hexA = hexData.slice(0, 2);
 
+    let A = parseInt(hexA, 16);
+
+    let result = (100 / 255) * A;
+
+    console.log('throttle position in %:', result + ' %');
+  }
+
+  cal_oxigen_senV(hexData) {
+    let hexA = hexData.slice(0, 2);
+
+    let A = parseInt(hexA, 16);
+
+    let result = A / 200;
+
+    console.log('oxigen sensor voltage in V:', result + ' V');
+  }
+
+  cal_run_time_engine_start(hexData) {
+    let hexA = hexData.slice(0, 2);
+    let hexB = hexData.slice(2, 4);
+
+    let A = parseInt(hexA, 16);
+    let B = parseInt(hexB, 16);
+
+    let result = 256 * A + B;
+
+    console.log('runtime since engine start:', result + ' seconds');
+  }
 }
-let hexData_mass_air_flow="1234AB22"
-let mass_air_flow_res = cal_mass_air_flow(hexData_mass_air_flow)
-console.log("mass air flow in g/s:", mass_air_flow_res  + " g/s");
-
-
-
-// ===========================================================================================================================//
-
-
-
-function cal_throttle_position(hexData){
-
-    let hexA =hexData.slice(0,2)
-
-    let A = parseInt(hexA,16)
-
-    let result = (100/255) * A;
-
-    return result;
-
-
-}
-let hexData_throttle_position="1234AB22"
-let throttle_position_res = cal_throttle_position(hexData_mass_air_flow)
-console.log("throttle position in %:", throttle_position_res  + " %");
-
-
-// =====================================================================================================================================//
-
-
-
-function cal_oxigen_senV(hexData){
-
-    let hexA =hexData.slice(0,2)
-
-    let A = parseInt(hexA,16)
-
-    let result = A / 200
-
-    return result;
-
-
-}
-let hexData_oxigen_senV="1234AB22"
-let oxigen_senV_res = cal_oxigen_senV(hexData_oxigen_senV)
-console.log("oxigen sensor voltage in V:", oxigen_senV_res  + " V");
-
-
-// ========================================================================================//
-
-
-
-function cal_run_time_engine_start(hexData){
-
-    let hexA =hexData.slice(0,2)
-    let hexB =hexData.slice(2,4)
-
-    let A = parseInt(hexA,16)
-    let B = parseInt(hexB,16)
-
-    let result = (256 * A) + B
-
-    return result;
-}
-
-
-
-let hexData_run="1234AB22"
-let engine_start_res = cal_run_time_engine_start(hexData_run)
-console.log("runtime since engine start:", engine_start_res  + " seconds");
-
-
-
-
-
-
-
